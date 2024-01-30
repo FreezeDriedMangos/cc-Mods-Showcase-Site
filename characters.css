@@ -17,6 +17,7 @@
     width: 150vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .grid-item {
