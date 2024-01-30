@@ -13,8 +13,8 @@ Johanna	4	2	3	2	5	2	4	FALSE	FALSE	Johanna the Trucker	Arin and EWanderer
 Riggs?	4	1	3	2	3	2	3	FALSE	FALSE	Evil Riggs	
 Philip	3	1	1	4	1	3	5	TRUE	FALSE	Philip the Mechanic	clay
 Sir Ratzo	3	1	1	2	1	3	5	FALSE	FALSE	Knight's Cohort	clay
-Dame Emily	2	1	3	3	5	5	4	FALSE	FALSE	Knight's Cohort	clay
-Dame Halla	1?2	1	1	3?2	0	2	5	FALSE	FALSE	Knight's Cohort	clay
+Dame Emily	2	1	3	3	5	2	4	FALSE	FALSE	Knight's Cohort	clay
+Dame Halla	1?2	1	1	3?2	0	5	5	FALSE	FALSE	Knight's Cohort	clay
 Lady Ruby	0	0	0	0	0	0	0	FALSE	FALSE	Knight's Cohort	clay
 Nola	1	2	2	6	0	2	4	TRUE	TRUE	Two's Company	Mezzelo
 Isabelle	5	0	4	1	0	3	3	TRUE	TRUE	Two's Company	Mezzelo
@@ -116,7 +116,7 @@ function reSortCharacters() {
     const sortParams = sortOption.split(":")
     characters.sort((c1, c2) => {
         if (sortOption === "default") {
-            return c2.index - c1.index
+            return c1.index - c2.index
         } else {
             const paramC1 = c1[sortParams[0]];
             const paramC2 = c2[sortParams[0]]; 
