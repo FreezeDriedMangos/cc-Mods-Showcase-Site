@@ -1,14 +1,14 @@
 const NUM_COLUMNS = 4
 
 const tsvBecauseJSCantReadLocalFilesLAME = 
-`Dizzy	2	5	1	1	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
-Riggs	2	1	5	3	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
-Peri	5	1	3	2	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
-Isaac	2	3	1	2	5	1	3	TRUE	TRUE	Vanilla	Cobalt Core
-Drake	5	3	2	2	0	4	3	TRUE	TRUE	Vanilla	Cobalt Core
-Max	1	3	2	5	0	2	4	TRUE	TRUE	Vanilla	Cobalt Core
-Books	3	3	2	3	2	2	3	TRUE	FALSE	Vanilla	Cobalt Core
-Cat	2?3	1?4	1?4	1?4	0?5	3	4	TRUE	FALSE	Vanilla	Cobalt Core
+`Dizzy	2	5	1	1	0	1	1	TRUE	TRUE	Cobalt Core	Cobalt Core
+Riggs	2	1	5	3	0	1	1	TRUE	TRUE	Cobalt Core	Cobalt Core
+Peri	5	1	3	2	0	1	1	TRUE	TRUE	Cobalt Core	Cobalt Core
+Isaac	2	3	1	2	5	1	3	TRUE	TRUE	Cobalt Core	Cobalt Core
+Drake	5	3	2	2	0	4	3	TRUE	TRUE	Cobalt Core	Cobalt Core
+Max	1	3	2	5	0	2	4	TRUE	TRUE	Cobalt Core	Cobalt Core
+Books	3	3	2	3	2	2	3	TRUE	FALSE	Cobalt Core	Cobalt Core
+Cat	2?3	1?4	1?4	1?4	0?5	3	4	TRUE	FALSE	Cobalt Core	Cobalt Core
 Johanna	4	2	3	2	5	2	4	FALSE	FALSE	Johanna the Trucker	Arin and EWanderer
 Riggs?	4	1	3	2	3	2	3	FALSE	FALSE	Evil Riggs	
 Philip	3	1	1	4	1	3	5	TRUE	FALSE	Philip the Mechanic	clay
