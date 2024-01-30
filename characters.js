@@ -91,7 +91,7 @@ makeGrid(document.getElementById("characterBlocks"), rows, NUM_COLUMNS, (cell, i
     
     if (!characters[i].memories) block.querySelector("#memoriesIcon").style.visibility = "hidden";
     if (!characters[i].dialogue) block.querySelector("#dialogueIcon").style.visibility = "hidden";
-    block.querySelector("#modnameLabel").innerText = characters[i].mod
+    block.querySelector("#modnameLabel").innerText = characters[i].mod + "\n" + characters[i].author
     // const modname = document.createElement("span")
     // modname.innerText = characters[i].mod
     // block.querySelector(".div2").appendChild(modname) 
