@@ -20,7 +20,7 @@ Nola	1	2	2	6	0	2	4	TRUE	TRUE	Two's Company	Mezzelo
 Isabelle	5	0	4	1	0	3	3	TRUE	TRUE	Two's Company	Mezzelo
 Ilya	5	2	1	3	0	5	4	TRUE	FALSE	Two's Company	Mezzelo
 Dave	5	2	2	2	0	3	4	FALSE	FALSE	Dave the Gambler	rft50
-Jester	0	0	0	0	0	0	0	FALSE	FALSE		rft51
+Jester	0	0	0	0	0	0	0	FALSE	FALSE		rft50
 Dizzy?	6	1	1	2	1	5	3	TRUE	FALSE	Corrosive Cobra	
 Len	3	2	2	2	2	3	4	FALSE	FALSE	Len Mod	
 Soggins	4	2	2	4	3	4	3	TRUE	FALSE	Soggins	Arin & Shockah
@@ -42,9 +42,11 @@ function makeGrid(container, rows, cols, contentFunction) {
   };
 };
 
+let sortOption = "default"
+document.getElementById(sortOption).style.backgroundColor = "#3a67cc"
 
 const charactersRaw = tsvBecauseJSCantReadLocalFilesLAME.split('\n')
-const characters = charactersRaw.map(raw => {
+const characters = charactersRaw.map((raw, index) => {
     const data = raw.split('\t')
     return {
         name:       data[0],
@@ -59,48 +61,83 @@ const characters = charactersRaw.map(raw => {
         memories: JSON.parse(data[9].toLowerCase()),
         mod: data[10],
         author: data[11],
+        index 
     }
 });
+
 const charactersCount = charactersRaw.length
-const rows = Math.ceil(charactersCount/NUM_COLUMNS)
-
 const characterBlockTemplate = document.getElementById("characterBlock")
+characterBlockTemplate.remove()
 
-// makeGrid(document.getElementById("characterBlocks"), rows, NUM_COLUMNS, (cell, i) => {
-    // if (i >= characters.length) return;
-    // if (!characters[i]) return;
 const container = document.getElementById("characterBlocks")
-for (let i = 0; i < characters.length; i++) {
-    let cell = document.createElement("div")
-    container.appendChild(cell).className = "grid-item"
+makeCharacterBlocks()
 
-    // cell.innerText = characters[i].name
-    const block = characterBlockTemplate.cloneNode(true)
-    block.querySelector("#profilePic").src = `characterArt/CharPortraits${i+1}.png`
-    for (let j = 0; j < characters[i].offense[0];    j++) block.querySelector(`#offense${j+1}`    ).style.backgroundColor = "#c651f6";
-    for (let j = 0; j < characters[i].defense[0];    j++) block.querySelector(`#defense${j+1}`    ).style.backgroundColor = "#44a5fc";
-    for (let j = 0; j < characters[i].evasion[0];    j++) block.querySelector(`#evasion${j+1}`    ).style.backgroundColor = "#ff9d77";
-    for (let j = 0; j < characters[i].utility[0];    j++) block.querySelector(`#utility${j+1}`    ).style.backgroundColor = "#6f72e5";
-    for (let j = 0; j < characters[i].midrow[0];     j++) block.querySelector(`#midrow${j+1}`     ).style.backgroundColor = "#5df7a1";
-    for (let j = 0; j < characters[i].risk[0];       j++) block.querySelector(`#risk${j+1}`       ).style.backgroundColor = "#f35281";
-    for (let j = 0; j < characters[i].difficulty[0]; j++) block.querySelector(`#difficulty${j+1}` ).style.backgroundColor = "#d4e8f4";
+function makeCharacterBlocks() {
+    for (let i = 0; i < characters.length; i++) {
+        // let cell = document.createElement("div")
+        // container.appendChild(cell).className = "grid-item"
     
-    for (let j = characters[i].offense[0];    j < characters[i].offense[1];    j++) {block.querySelector(`#offense${j+1}`    ).innerText = "?"; block.querySelector(`#offense${j+1}`   ).style.color = "#c651f6"; }
-    for (let j = characters[i].defense[0];    j < characters[i].defense[1];    j++) {block.querySelector(`#defense${j+1}`    ).innerText = "?"; block.querySelector(`#defense${j+1}`   ).style.color = "#44a5fc"; }
-    for (let j = characters[i].evasion[0];    j < characters[i].evasion[1];    j++) {block.querySelector(`#evasion${j+1}`    ).innerText = "?"; block.querySelector(`#evasion${j+1}`   ).style.color = "#ff9d77"; }
-    for (let j = characters[i].utility[0];    j < characters[i].utility[1];    j++) {block.querySelector(`#utility${j+1}`    ).innerText = "?"; block.querySelector(`#utility${j+1}`   ).style.color = "#6f72e5"; }
-    for (let j = characters[i].midrow[0];     j < characters[i].midrow[1];     j++) {block.querySelector(`#midrow${j+1}`     ).innerText = "?"; block.querySelector(`#midrow${j+1}`    ).style.color = "#5df7a1"; }
-    for (let j = characters[i].risk[0];       j < characters[i].risk[1];       j++) {block.querySelector(`#risk${j+1}`       ).innerText = "?"; block.querySelector(`#risk${j+1}`      ).style.color = "#f35281"; }
-    for (let j = characters[i].difficulty[0]; j < characters[i].difficulty[1]; j++) {block.querySelector(`#difficulty${j+1}` ).innerText = "?"; block.querySelector(`#difficulty${j+1}`).style.color = "#d4e8f4"; }
-    
-    if (!characters[i].memories) block.querySelector("#memoriesIcon").style.visibility = "hidden";
-    if (!characters[i].dialogue) block.querySelector("#dialogueIcon").style.visibility = "hidden";
-    block.querySelector("#modnameLabel").innerText = characters[i].mod + "\n" + characters[i].author
-    // const modname = document.createElement("span")
-    // modname.innerText = characters[i].mod
-    // block.querySelector(".div2").appendChild(modname) 
-    
-    cell.appendChild(block)
+        // cell.innerText = characters[i].name
+        const block = characterBlockTemplate.cloneNode(true)
+        block.querySelector("#profilePic").src = `characterArt/CharPortraits${characters[i].index+1}.png`
+        for (let j = 0; j < characters[i].offense[0];    j++) block.querySelector(`#offense${j+1}`    ).style.backgroundColor = "#c651f6";
+        for (let j = 0; j < characters[i].defense[0];    j++) block.querySelector(`#defense${j+1}`    ).style.backgroundColor = "#44a5fc";
+        for (let j = 0; j < characters[i].evasion[0];    j++) block.querySelector(`#evasion${j+1}`    ).style.backgroundColor = "#ff9d77";
+        for (let j = 0; j < characters[i].utility[0];    j++) block.querySelector(`#utility${j+1}`    ).style.backgroundColor = "#6f72e5";
+        for (let j = 0; j < characters[i].midrow[0];     j++) block.querySelector(`#midrow${j+1}`     ).style.backgroundColor = "#5df7a1";
+        for (let j = 0; j < characters[i].risk[0];       j++) block.querySelector(`#risk${j+1}`       ).style.backgroundColor = "#f35281";
+        for (let j = 0; j < characters[i].difficulty[0]; j++) block.querySelector(`#difficulty${j+1}` ).style.backgroundColor = "#d4e8f4";
+        
+        for (let j = characters[i].offense[0];    j < characters[i].offense[1];    j++) block.querySelector(`#offense${j+1}`    ).innerText = "?"; 
+        for (let j = characters[i].defense[0];    j < characters[i].defense[1];    j++) block.querySelector(`#defense${j+1}`    ).innerText = "?"; 
+        for (let j = characters[i].evasion[0];    j < characters[i].evasion[1];    j++) block.querySelector(`#evasion${j+1}`    ).innerText = "?"; 
+        for (let j = characters[i].utility[0];    j < characters[i].utility[1];    j++) block.querySelector(`#utility${j+1}`    ).innerText = "?"; 
+        for (let j = characters[i].midrow[0];     j < characters[i].midrow[1];     j++) block.querySelector(`#midrow${j+1}`     ).innerText = "?"; 
+        for (let j = characters[i].risk[0];       j < characters[i].risk[1];       j++) block.querySelector(`#risk${j+1}`       ).innerText = "?"; 
+        for (let j = characters[i].difficulty[0]; j < characters[i].difficulty[1]; j++) block.querySelector(`#difficulty${j+1}` ).innerText = "?"; 
+        
+        if (!characters[i].memories) block.querySelector("#memoriesIcon").style.visibility = "hidden";
+        if (!characters[i].dialogue) block.querySelector("#dialogueIcon").style.visibility = "hidden";
+        block.querySelector("#modnameLabel").innerText = characters[i].mod + "\n" + characters[i].author
+        // const modname = document.createElement("span")
+        // modname.innerText = characters[i].mod
+        // block.querySelector(".div2").appendChild(modname) 
+        
+        container.appendChild(block)
+    }
 }
 
-characterBlockTemplate.remove()
+
+
+function reSortCharacters() {
+    // tq helps me make sure that [][]? will consistently sort higher/lower than [][]
+    const tq = (x) => x > 0 ? 0.1 : 0
+
+    const sortParams = sortOption.split(":")
+    characters.sort((c1, c2) => {
+        if (sortOption === "default") {
+            return c2.index - c1.index
+        } else {
+            const paramC1 = c1[sortParams[0]];
+            const paramC2 = c2[sortParams[0]]; 
+
+            if (sortParams[1] == "ASC") return (paramC1[0]+tq(paramC1[1])) - (paramC2[0]+tq(paramC2[1])); 
+            if (sortParams[1] == "DSC") return (paramC2[0]+paramC2[1]-tq(paramC2[1])) - (paramC1[0]+paramC1[1]-tq(paramC1[1]));
+        }
+
+        return 0;
+    })
+}
+
+function sortButtonClicked(event) {
+    console.log(sortOption)
+    const buttons = document.getElementsByClassName("sortButton");
+    sortOption = event.target.id
+    for (let i = 0; i < buttons.length; i++) buttons[i].style.backgroundColor = "#060326"
+    try { document.getElementById(sortOption).style.backgroundColor = "#3a67cc" } catch {}
+
+    container.innerHTML = '';
+    reSortCharacters()
+    makeCharacterBlocks()
+
+}

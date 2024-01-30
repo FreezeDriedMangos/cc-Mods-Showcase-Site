@@ -57,19 +57,20 @@ html {
     border: 3px solid #3a67cc;
     background-color: #060326;
     padding: 5px;
+    margin: 10px;
 }
 
 
 .modnameLabel { width: 100%; text-align: right; font-size: 24px; user-select: none; }
 .statLabel { text-align: right; font-size: 24px; user-select: none; }
 .profilePic { height: 100%; }
-.div3 { color: #c651f6; }
-.div10 { color: #44a5fc; }
-.div17 { color: #ff9d77; }
-.div24 { color: #6f72e5; }
-.div31 { color: #5df7a1; }
-.div38 { color: #f35281; }
-.div45 { color: #d4e8f4; }
+.offenseForeground { color: #c651f6; }
+.defenseForeground { color: #44a5fc; }
+.evasionForeground { color: #ff9d77; }
+.utilityForeground { color: #6f72e5; }
+.midrowForeground { color: #5df7a1; }
+.riskForeground { color: #f35281; }
+.difficultyForeground { color: #d4e8f4; }
 .thingIcon { height: 100%; }
 .div2 { justify-content: left; align-items: left; display: flex; }
 .div1 { justify-content: left; align-items: left; display: flex; }
@@ -175,3 +176,24 @@ html {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   } 
+
+
+
+
+
+
+.sortingControls, .sortTitle {
+    width: 75vw;
+    padding-left: 12vw;
+    display: flex;  
+    flex-wrap: wrap;
+}
+
+.sortButton {
+    padding: 5px;  
+    margin: 5px;
+    background-color: #060326;
+    border-radius: 5px;
+    border: 1.5px solid #3a67cc;
+    cursor: pointer;
+}
