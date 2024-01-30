@@ -66,9 +66,13 @@ const rows = Math.ceil(charactersCount/NUM_COLUMNS)
 
 const characterBlockTemplate = document.getElementById("characterBlock")
 
-makeGrid(document.getElementById("characterBlocks"), rows, NUM_COLUMNS, (cell, i) => {
-    if (i >= characters.length) return;
-    if (!characters[i]) return;
+// makeGrid(document.getElementById("characterBlocks"), rows, NUM_COLUMNS, (cell, i) => {
+    // if (i >= characters.length) return;
+    // if (!characters[i]) return;
+const container = document.getElementById("characterBlocks")
+for (let i = 0; i < characters.length; i++) {
+    let cell = document.createElement("div")
+    container.appendChild(cell).className = "grid-item"
 
     // cell.innerText = characters[i].name
     const block = characterBlockTemplate.cloneNode(true)
@@ -97,6 +101,6 @@ makeGrid(document.getElementById("characterBlocks"), rows, NUM_COLUMNS, (cell, i
     // block.querySelector(".div2").appendChild(modname) 
     
     cell.appendChild(block)
-})
+}
 
 characterBlockTemplate.remove()
