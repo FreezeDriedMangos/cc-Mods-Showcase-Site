@@ -1,15 +1,36 @@
 const NUM_COLUMNS = 4
 
 const tsvBecauseJSCantReadLocalFilesLAME = 
-`Dizzy	2	5	1	1	0	1	1	true	true	Cobalt Core	Cobalt Core
-Riggs	2	1	5	3	0	1	1	true	true	Cobalt Core	Cobalt Core
-Peri	5	1	3	2	0	1	1	true	true	Cobalt Core	Cobalt Core
-Isaac	2	3	1	2	5	1	3	true	true	Cobalt Core	Cobalt Core
-Drake	5	3	2	2	0	4	3	true	true	Cobalt Core	Cobalt Core
-Max	1	3	2	5	0	2	4	true	true	Cobalt Core	Cobalt Core
-Books	3	3	2	3	2	2	3	true	false	Cobalt Core	Cobalt Core
-Cat	2?3	1?4	1?4	1?4	0?5	3	4	true	false	Cobalt Core	Cobalt Core
-Johanna	4	2	3	2	5	2	4	false	false	Johanna the Trucker	Arin and EWanderer`
+`Dizzy	2	5	1	1	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
+Riggs	2	1	5	3	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
+Peri	5	1	3	2	0	1	1	TRUE	TRUE	Vanilla	Cobalt Core
+Isaac	2	3	1	2	5	1	3	TRUE	TRUE	Vanilla	Cobalt Core
+Drake	5	3	2	2	0	4	3	TRUE	TRUE	Vanilla	Cobalt Core
+Max	1	3	2	5	0	2	4	TRUE	TRUE	Vanilla	Cobalt Core
+Books	3	3	2	3	2	2	3	TRUE	FALSE	Vanilla	Cobalt Core
+Cat	2?3	1?4	1?4	1?4	0?5	3	4	TRUE	FALSE	Vanilla	Cobalt Core
+Johanna	4	2	3	2	5	2	4	FALSE	FALSE	Johanna the Trucker	Arin and EWanderer
+Riggs?	4	1	3	2	3	2	3	FALSE	FALSE	Evil Riggs	
+Philip	3	1	1	4	1	3	5	TRUE	FALSE	Philip the Mechanic	clay
+Sir Ratzo	3	1	1	2	1	3	5	FALSE	FALSE	Knight's Cohort	clay
+Dame Emily	2	1	3	3	5	5	4	FALSE	FALSE	Knight's Cohort	clay
+Dame Halla	1?2	1	1	3?2	0	2	5	FALSE	FALSE	Knight's Cohort	clay
+Lady Ruby	0	0	0	0	0	0	0	FALSE	FALSE	Knight's Cohort	clay
+Nola	1	2	2	6	0	2	4	TRUE	TRUE	Two's Company	Mezzelo
+Isabelle	5	0	4	1	0	3	3	TRUE	TRUE	Two's Company	Mezzelo
+Ilya	5	2	1	3	0	5	4	TRUE	FALSE	Two's Company	Mezzelo
+Dave	5	2	2	2	0	3	4	FALSE	FALSE	Dave the Gambler	rft50
+Jester	0	0	0	0	0	0	0	FALSE	FALSE		rft51
+Dizzy?	6	1	1	2	1	5	3	TRUE	FALSE	Corrosive Cobra	
+Len	3	2	2	2	2	3	4	FALSE	FALSE	Len Mod	
+Soggins	4	2	2	4	3	4	3	TRUE	FALSE	Soggins	Arin & Shockah
+Dracula	4	3	2	4	2	3	3	FALSE	FALSE	Dracula	Shockah
+Tucker	6	4	0	1	0	3	2	FALSE	FALSE	Tucker the Saboteur	SoggoruWaffle
+Eili	2	3	0	4	1	1	1	FALSE	FALSE	Braid and Eili Avali Duo	
+Braid	5	1	1	2	1	3	2	FALSE	FALSE	Braid and Eili Avali Duo	
+Eddie	3	2	1	5	1	1	3	FALSE	FALSE	Eddie the Electrian	
+Randall	2?1	2?1	2?1	2	0	1	3	FALSE	FALSE	Randall the Playtester	
+Tera	0	0	0	0	0	0	0	FALSE	FALSE		Teratto`
 
 function makeGrid(container, rows, cols, contentFunction) {
   container.style.setProperty('--grid-rows', rows);
@@ -34,8 +55,8 @@ const characters = charactersRaw.map(raw => {
         midrow:     (data[5]+"?0").split('?').map(n => JSON.parse(n)),
         risk:       (data[6]+"?0").split('?').map(n => JSON.parse(n)),
         difficulty: (data[7]+"?0").split('?').map(n => JSON.parse(n)),
-        dialogue: JSON.parse(data[8]),
-        memories: JSON.parse(data[9]),
+        dialogue: JSON.parse(data[8].toLowerCase()),
+        memories: JSON.parse(data[9].toLowerCase()),
         mod: data[10],
         author: data[11],
     }
